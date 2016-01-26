@@ -1,0 +1,13 @@
+{
+    "name": "nathanmcbride/ibm-watson-php-library",
+    "description": "Ibm Watson PHP Library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.1"
+    },
+    "authors": [
+        {
+            "name": "Nathan McBride",
+            "email": "nathan@brideo.co.uk"
+        }
+    ]
+}
