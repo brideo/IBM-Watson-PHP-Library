@@ -1,13 +1,18 @@
 {
-    "name": "brideo/ibm-watson-php-library",
-    "description": "Ibm Watson PHP Library",
-    "require": {
-        "guzzlehttp/guzzle": "^6.1"
-    },
-    "authors": [
-        {
-            "name": "Nathan McBride",
-            "email": "nathan@brideo.co.uk"
-        }
-    ]
+  "name": "brideo/ibm-watson-php-library",
+  "description": "Ibm Watson PHP Library",
+  "require": {
+    "guzzlehttp/guzzle": "^6.1"
+  },
+  "authors": [
+    {
+      "name": "Nathan McBride",
+      "email": "nathan@brideo.co.uk"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Brideo\\": "src/"
+    }
+  }
 }
