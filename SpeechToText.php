@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Services\Ibm;
+namespace Brideo\IbmWatson\Ibm;
 
-use App\Services\Ibm\Config\Config;
-use App\Services\Ibm\Config\ConfigInterface;
+use Brideo\IbmWatson\Ibm\Config\Config;
+use Brideo\IbmWatson\Ibm\Config\ConfigInterface;
 use Exception;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Cookie\CookieJar;

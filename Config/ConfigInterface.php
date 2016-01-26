@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Ibm\Config;
+namespace Brideo\IbmWatson\Ibm\Config;
 
 interface ConfigInterface
 {
