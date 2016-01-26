@@ -1,5 +1,5 @@
 {
-    "name": "nathanmcbride/ibm-watson-php-library",
+    "name": "brideo/ibm-watson-php-library",
     "description": "Ibm Watson PHP Library",
     "require": {
         "guzzlehttp/guzzle": "^6.1"
