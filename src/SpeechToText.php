@@ -115,7 +115,11 @@ class SpeechToText extends Ibm
     }
 
     /**
+     * Get the transcripts of the last recognized
+     * file.
+     *
      * @throws Exception
+     * @return array
      */
     public function getTranscripts()
     {
