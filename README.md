@@ -40,18 +40,19 @@ Other commands are:
   
 ##Concept Insights
 
-This is still in development, however you can currently create, delete, update and retrieve Corpus'
+This is still in development, however you can currently create, delete, update and retrieve Corpus and Document.
 
     $config = new Config();
-    $config->setPassword('IBM_CONCEPT_INSIGHTS_PASSWORD');
-    $config->setUsername('IBM_CONCEPT_INSIGHTS_USERNAME');
-
+    $config->setUsername('username');
+    $config->setPassword('password');
+    
     $corpus = CorpusFactory::create('testCorpusBrideo', Corpus::DEFAULT_REQUEST_METHOD, $config);
-    $corpus->create();
-    $corpus->config->setBody("{key: value}")
-    $corpus->update();
-    $data = $corpus->retrieve();
     $corpus->delete();
+    $corpus->create();
+    
+    
+    $document = DocumentFactory::create($corpus, $config, 'testDocumentBrideo');
+    $document->create();
 
 #Todos
 
