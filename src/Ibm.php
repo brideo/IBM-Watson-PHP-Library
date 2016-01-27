@@ -2,8 +2,7 @@
 
 namespace Brideo\IbmWatson\Ibm;
 
-use Brideo\IbmWatson\Ibm\Config\Config;
-use Brideo\IbmWatson\Ibm\Config\ConfigInterface;
+use Brideo\IbmWatson\Ibm\Api\ConfigInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -32,6 +31,9 @@ abstract class Ibm
      */
     protected $model = [];
 
+    /**
+     * @var array
+     */
     protected $clientConfig = [];
 
     /**

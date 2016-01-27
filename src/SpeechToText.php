@@ -2,8 +2,7 @@
 
 namespace Brideo\IbmWatson\Ibm;
 
-use Brideo\IbmWatson\Ibm\Config\Config;
-use Brideo\IbmWatson\Ibm\Config\ConfigInterface;
+use Brideo\IbmWatson\Ibm\Api\ConfigInterface;
 use Exception;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Cookie\CookieJar;

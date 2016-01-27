@@ -1,6 +1,8 @@
 <?php
 
-namespace Brideo\IbmWatson\Ibm\Config;
+namespace Brideo\IbmWatson\Ibm;
+
+use Brideo\IbmWatson\Ibm\Api\ConfigInterface;
 
 class Config implements ConfigInterface
 {

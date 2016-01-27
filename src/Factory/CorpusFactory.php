@@ -1,8 +1,9 @@
 <?php
 
-namespace Brideo\IbmWatson\Ibm\ConceptInsights;
+namespace Brideo\IbmWatson\Ibm\Factory\ConceptInsights;
 
-use Brideo\IbmWatson\Ibm\Config\ConfigInterface;
+use Brideo\IbmWatson\Ibm\Api\ConfigInterface;
+use Brideo\IbmWatson\Ibm\ConceptInsights\Corpus;
 use GuzzleHttp\ClientInterface;
 
 class CorpusFactory
