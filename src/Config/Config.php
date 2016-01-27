@@ -134,14 +134,24 @@ class Config implements ConfigInterface
     /**
      * Set an item in the config.
      *
-     * @param string $key
-     * @param mixed  $value
+     * @param string|array $key
+     * @param mixed        $value
      *
-     * @return mixed
+     * @return $this
      */
-    public function setConfig($key, $value)
+    public function setConfig($key, $value = false)
     {
+        if (is_array($key)) {
+            foreach ($key as $k => $v) {
+                $this->setConfig($k, $v);
+            }
+
+            return $this;
+        }
+
         $this->config[$key] = $value;
+
+        return $this;
     }
 
     /**

@@ -4,6 +4,7 @@ namespace Brideo\IbmWatson\Ibm\ConceptInsights;
 
 use Brideo\IbmWatson\Ibm\ConceptInsights;
 use Brideo\IbmWatson\Ibm\Config\ConfigInterface;
+use Exception;
 use GuzzleHttp\ClientInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -12,7 +13,7 @@ class Corpus extends ConceptInsights
 
     const CORPORA_URI = 'v2/corpora/';
 
-    /**
+    /**\
      * @var mixed
      */
     protected $options = [];
@@ -57,13 +58,18 @@ class Corpus extends ConceptInsights
      * Get the response of the configured Corpus.
      *
      * @return mixed|ResponseInterface
+     * @throws Exception
      */
     public function get()
     {
+        if (!$this->validate()) {
+            throw new Exception("Something is wrong with the validation of the Corpus.");
+        }
+
         return $this->request(
             $this->getCorpusUri(),
             $this->method,
-            $this->options
+            $this->config->getConfig()
         );
     }
 
@@ -163,6 +169,24 @@ class Corpus extends ConceptInsights
     public function getCorpusUri()
     {
         return static::CORPORA_URI . $this->getAccountId() . '/' . $this->name;
+    }
+
+    /**
+     * @todo improve this method
+     *
+     * @return bool
+     */
+    public function validate()
+    {
+        if ($this->method == 'DELETE' || $this->method == 'GET') {
+            return true;
+        }
+
+        if (!$this->config->getConfig('body')) {
+            $this->config->setConfig('body', '{}');
+        }
+
+        return true;
     }
 
 }
