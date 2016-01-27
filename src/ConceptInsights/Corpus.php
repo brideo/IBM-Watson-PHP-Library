@@ -47,8 +47,8 @@ class Corpus extends ConceptInsights
             $name = strval(rand(1, 999999));
         }
 
-        $this->method = $method;
         $this->name = $name;
+        $this->method = $method;
 
         parent::__construct($config, $client, $accountId);
     }
@@ -77,9 +77,9 @@ class Corpus extends ConceptInsights
         return CorpusFactory::create(
             $this->name,
             $method,
-            $this->accountId,
+            $this->config,
             $this->getClient(),
-            $this->getClient()->getConfig()
+            $this->accountId
         );
     }
 

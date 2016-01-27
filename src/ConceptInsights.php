@@ -27,7 +27,7 @@ class ConceptInsights extends Ibm
         ClientInterface $client = null,
         $accountId = false
     ) {
-        $this->config = $client ?: new Config();
+        $this->config = $config ?: new Config();
         $this->config->setBaseUri(static::IBM_URI);
 
         $this->accountId = $accountId;
