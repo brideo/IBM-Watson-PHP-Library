@@ -5,12 +5,15 @@ namespace Brideo\IbmWatson\Ibm\ConceptInsights;
 use Brideo\IbmWatson\Ibm\Api\ConfigInterface;
 use Brideo\IbmWatson\Ibm\ConceptInsights;
 use Brideo\IbmWatson\Ibm\Factory\ConceptInsights\CorpusFactory;
+use Brideo\IbmWatson\Ibm\Factory\ConceptInsights\DocumentFactory;
 use GuzzleHttp\ClientInterface;
 
 class Corpus extends ConceptInsights
 {
 
     const CORPORA_URI = 'v2/corpora/';
+
+    protected $documents = [];
 
     /**
      * Corpus constructor.
@@ -56,11 +59,11 @@ class Corpus extends ConceptInsights
     public function getUri()
     {
         $suffix = '';
-        if($this->name) {
+        if ($this->name) {
             $suffix .= '/' . $this->name;
         }
 
-        return static::CORPORA_URI . $this->getAccountId() .$suffix;
+        return static::CORPORA_URI . $this->getAccountId() . $suffix;
     }
 
     /**
@@ -77,6 +80,32 @@ class Corpus extends ConceptInsights
         }
 
         return true;
+    }
+
+    /**
+     * @param $name
+     *
+     * @return $this
+     */
+    public function createDocument($name)
+    {
+        $this->documents[$name] = DocumentFactory::create($this, $this->config, $name);
+
+        return $this;
+    }
+
+    /**
+     * @param $name
+     *
+     * @return null|Document
+     */
+    public function getDocument($name)
+    {
+        if (!isset($this->documents[$name])) {
+            return $this->documents[$name];
+        }
+
+        return null;
     }
 
 }
