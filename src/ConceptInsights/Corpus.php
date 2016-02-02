@@ -4,6 +4,7 @@ namespace Brideo\IbmWatson\Ibm\ConceptInsights;
 
 use Brideo\IbmWatson\Ibm\Api\ConfigInterface;
 use Brideo\IbmWatson\Ibm\ConceptInsights;
+use Brideo\IbmWatson\Ibm\Config;
 use Brideo\IbmWatson\Ibm\Factory\ConceptInsights\CorpusFactory;
 use Brideo\IbmWatson\Ibm\Factory\ConceptInsights\DocumentFactory;
 use GuzzleHttp\ClientInterface;
@@ -89,7 +90,13 @@ class Corpus extends ConceptInsights
      */
     public function createDocument($name)
     {
-        $this->documents[$name] = DocumentFactory::create($this, $this->config, $name);
+        $config = new Config(
+            $this->config->getBaseUri(),
+            $this->config->getUsername(),
+            $this->config->getPassword()
+        );
+
+        $this->documents[$name] = DocumentFactory::create($this, $config, $name);
 
         return $this;
     }
@@ -101,11 +108,25 @@ class Corpus extends ConceptInsights
      */
     public function getDocument($name)
     {
-        if (!isset($this->documents[$name])) {
+        if (isset($this->documents[$name])) {
             return $this->documents[$name];
         }
 
         return null;
+    }
+
+    /**
+     * Get the related concepts.
+     *
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     */
+    public function getLabelSearch($search)
+    {
+        return $this->request(
+            $this->getUri() . '/label_search?query=' . urlencode($search),
+            'GET',
+            $this->config->getConfig()
+        );
     }
 
 }

@@ -37,7 +37,7 @@ class Config implements ConfigInterface
         $config = []
     ) {
         $this->setUsername($username);
-        $this->setPassword($username);
+        $this->setPassword($password);
         $this->setBaseUri($baseUrl);
 
         foreach ($config as $key => $value) {

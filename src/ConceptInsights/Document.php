@@ -39,7 +39,7 @@ class Document extends ConceptInsights
         $this->method = $method;
 
         parent::__construct(
-            $this->corpus->config,
+            $this->config,
             $this->corpus->getClient(),
             $this->corpus->getAccountId()
         );
