@@ -116,6 +116,24 @@ class Corpus extends ConceptInsights
     }
 
     /**
+     * Retrieve the documents within the Corpus.
+     *
+     * @param array $ids
+     *
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     */
+    public function getDocuments(array $ids)
+    {
+        return $this->request(
+            $this->getUri() . '/documents',
+            'GET',
+            json_encode([
+                'documents' => $ids
+            ])
+        );
+    }
+
+    /**
      * Get the related concepts.
      *
      * @return mixed|\Psr\Http\Message\ResponseInterface
