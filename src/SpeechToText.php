@@ -98,13 +98,16 @@ class SpeechToText extends Ibm
 
         $data[] = [
             'name'     => 'audio_file',
-            'contents' => fopen($pathToFile, 'r'),
+            'contents' => fopen($pathToFile, 'r')
         ];
 
         $this->recognize = $this->request($uri, 'POST', [
                 'multipart' => $data,
+                'query' => [
+                    'continuous'         => 'true'
+                ],
                 'cookies'   => $this->cookieJar,
-                'headers'   => [
+                'headers'            => [
                     'content-type' => $contentType
                 ],
             ]
