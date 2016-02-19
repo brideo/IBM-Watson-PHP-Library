@@ -104,7 +104,8 @@ class SpeechToText extends Ibm
         $this->recognize = $this->request($uri, 'POST', [
                 'multipart' => $data,
                 'query' => [
-                    'continuous'         => 'true'
+                    'continuous' => 'true',
+                    'inactivity_timeout' => -1
                 ],
                 'cookies'   => $this->cookieJar,
                 'headers'            => [
@@ -112,6 +113,20 @@ class SpeechToText extends Ibm
                 ],
             ]
         );
+
+        return $this;
+    }
+
+    /**
+     * Delete the current session.
+     *
+     * @return $this
+     */
+    public function deleteSession()
+    {
+        $this->request(static::IBM_SESSION_URI . '/' . $this->getSessionId(), 'DELETE', [
+            'cookies' => $this->cookieJar
+        ]);
 
         return $this;
     }
